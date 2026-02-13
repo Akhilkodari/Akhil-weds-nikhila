@@ -4,130 +4,242 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nikhila ❤️ Akhil Sai | Feb 21 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #333; text-align: center; overflow-x: hidden; }
-    
-    /* Red Banner Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0a0005; /* dark backdrop for drama */
+      color: #ffd700;
+      text-align: center;
+      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Full-page curtain background with parted effect */
+    #curtain-bg {
+      position: fixed;
+      inset: 0;
+      background: url('https://thumbs.dreamstime.com/b/rich-red-velvet-curtains-gold-tassels-part-to-reveal-spotlighted-stage-elegant-backdrop-creates-dramatic-entrance-ideal-395716487.jpg') center/cover no-repeat;
+      z-index: -2;
+      filter: brightness(0.85); /* subtle dim for text readability */
+    }
+
+    /* Overlay for better contrast if needed */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+    }
+
+    /* Banner / Invitation Reveal Area */
     #banner {
-      position: fixed; top: 0; left: 0; right: 0; background: linear-gradient(135deg, #ff0000, #c40000);
-      color: #fff; padding: 30px 20px; font-size: 32px; font-weight: bold;
-      z-index: 1000; cursor: pointer; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-      animation: drop 1.5s ease-out, glow 2s infinite alternate;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
     }
-    @keyframes drop { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-    @keyframes glow { from { box-shadow: 0 0 20px #ff0000; } to { box-shadow: 0 0 40px #ff4444; } }
-    
-    /* Main Content (hidden until banner tapped) */
-    #main { padding: 120px 20px 40px; display: none; }
-    h1 { font-size: 3.5em; color: #d63384; margin: 0.3em 0; animation: fadeIn 2s; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    
-    /* Scratch Cards Styles */
+
+    .invitation-text {
+      max-width: 90%;
+      padding: 40px 30px;
+      background: rgba(139, 0, 0, 0.35); /* semi-transparent red overlay */
+      border-radius: 25px;
+      border: 3px solid rgba(212, 175, 55, 0.6);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(212,175,55,0.3);
+      backdrop-filter: blur(6px);
+      animation: glowReveal 3s ease-out forwards;
+    }
+
+    .invitation-text h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5.5em;
+      margin: 0;
+      color: #ffd700;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      letter-spacing: 3px;
+    }
+
+    .invitation-text p {
+      font-size: 1.8em;
+      margin: 15px 0 0;
+      font-style: italic;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    @keyframes glowReveal {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Main content after tap */
+    #main {
+      padding: 80px 20px 60px;
+      display: none;
+      background: linear-gradient(to bottom, #fffaf0, #fff0f5);
+      color: #333;
+    }
+
+    h2 { font-family: 'Playfair Display', serif; color: #8b0000; }
+
+    /* Scratch Cards (same premium style as before) */
+    .scratch-section { margin: 70px 0; }
     .scratch-container {
-      margin: 50px auto; width: 280px; height: 280px; position: relative; display: inline-block;
+      margin: 30px auto;
+      width: 260px; height: 260px;
+      position: relative;
+      display: inline-block;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      overflow: hidden;
     }
-    canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; }
     .under {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
-      background: #fffacd; color: #b22222; font-size: 2em; font-family: 'Georgia', serif;
-      display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
-      box-sizing: border-box; border: 4px solid #ffd700; box-shadow: inset 0 0 20px #ffd700;
+      position: absolute; inset: 0; border-radius: 50%;
+      background: linear-gradient(135deg, #fffacd, #fff8e1);
+      color: #b22222;
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5em; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      border: 5px solid #d4af37;
+      box-shadow: inset 0 0 25px rgba(212,175,55,0.4);
     }
-    
-    /* Venue Banner */
+    canvas { position: absolute; inset: 0; border-radius: 50%; cursor: pointer; }
+
+    /* Venue & Cartoon (unchanged from previous premium version) */
     #venue {
-      margin: 60px 0; font-size: 2.8em; color: #b71c1c; background: linear-gradient(#ffebee, #ffcdd2);
-      padding: 30px; border-radius: 15px; border: 3px dashed #d81b60;
+      margin: 80px 0;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5em;
+      color: #8b0000;
+      background: linear-gradient(to right, #fff0f5, #ffe4e1);
+      padding: 40px 20px;
+      border-radius: 30px;
+      border: 3px dashed #d4af37;
+      box-shadow: 0 10px 30px rgba(139,0,0,0.15);
     }
-    
-    /* Cartoon Section */
-    #cartoon { margin: 40px auto; max-width: 320px; }
-    #cartoon img { max-width: 100%; height: auto; animation: float 6s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+    #cartoon {
+      margin: 60px auto;
+      max-width: 380px;
+    }
+    #cartoon img {
+      max-width: 100%; height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      animation: float 7s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
     button {
-      font-size: 1.3em; padding: 15px 30px; background: #4caf50; color: white; border: none;
-      border-radius: 10px; cursor: pointer; margin-top: 15px;
+      font-size: 1.4em;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+      transition: all 0.3s;
     }
+    button:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.6); }
   </style>
 </head>
 <body>
 
-  <!-- Red Banner (shows first) -->
-  <div id="banner" onclick="startReveal()">Tap / Click to Open Invitation</div>
+  <div id="curtain-bg"></div>
+  <div class="overlay"></div>
 
-  <!-- Main Content -->
+  <div id="banner" onclick="startReveal()">
+    <div class="invitation-text">
+      <h1>Nikhila weds Akhil Sai</h1>
+      <p>Tap to Begin Your Journey</p>
+    </div>
+  </div>
+
   <div id="main">
-    <h1>Nikhila weds Akhil Sai</h1>
-    <div style="font-size: 2em; color: #d63384; margin: 20px 0;">❤️ Save the Date ❤️</div>
-
-    <!-- Scratch Cards Section -->
-    <div style="margin: 60px 0;">
-      <h2>Scratch each circle to reveal the date</h2>
+    <div class="scratch-section">
+      <h2>Scratch to Discover the Date</h2>
       <div class="scratch-container">
-        <div class="under">Feb 21<br>2026</div>
+        <div class="under">21</div>
         <canvas id="c1"></canvas>
       </div>
       <div class="scratch-container">
-        <div class="under">Feb 21<br>2026</div>
+        <div class="under">Feb</div>
         <canvas id="c2"></canvas>
       </div>
       <div class="scratch-container">
-        <div class="under">Feb 21<br>2026</div>
+        <div class="under">2026</div>
         <canvas id="c3"></canvas>
       </div>
     </div>
 
-    <!-- Venue Banner -->
     <div id="venue">NR Convention Hall</div>
 
-    <!-- Cartoon with Placard and Map Button -->
     <div id="cartoon">
-      <img src="https://p7.hiclipart.com/preview/4/998/372/panel-cartoon-vector-bunny-placards.jpg" alt="Cartoon holding placard">
-      <p style="font-size: 1.8em; margin: 10px 0;">NR Convention Hall,<br>Subedari, Hanamkonda</p>
-      <button onclick="window.open('https://maps.app.goo.gl/EABWXEMB1S44eXdFA', '_blank')">Click me for Map →</button>
+      <img src="https://thumbs.dreamstime.com/b/image-features-cartoon-style-illustration-bride-groom-their-wedding-day-holding-hands-smiling-couple-436009007.jpg" alt="Bride and Groom">
+      <p>NR Convention Hall,<br>Subedari, Hanamkonda</p>
+      <button onclick="window.open('https://maps.app.goo.gl/EABWXEMB1S44eXdFA', '_blank')">Click for Map →</button>
     </div>
 
-    <p style="margin-top: 80px; color: #777;">With love from families of Nikhila & Akhil Sai</p>
+    <p style="margin-top: 100px; color: #777; font-style: italic;">With love from the families of Nikhila & Akhil Sai</p>
   </div>
 
   <script>
-    // Function to reveal main content and add confetti
     function startReveal() {
       document.getElementById('banner').style.display = 'none';
       document.getElementById('main').style.display = 'block';
       confettiBurst();
     }
 
-    // Simple confetti effect
     function confettiBurst() {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 120; i++) {
         let conf = document.createElement('div');
-        conf.style.position = 'fixed'; conf.style.width = '10px'; conf.style.height = '10px';
-        conf.style.background = ['#ff0', '#f00', '#0f0', '#00f'][Math.floor(Math.random() * 4)];
-        conf.style.left = Math.random() * 100 + 'vw'; conf.style.top = '-10px';
-        conf.style.opacity = Math.random(); conf.style.pointerEvents = 'none';
-        conf.style.transform = `rotate(${Math.random() * 360}deg)`;
+        conf.style.position = 'fixed';
+        conf.style.width = '12px'; conf.style.height = '12px';
+        conf.style.background = ['#ffd700', '#b22222', '#fff', '#d4af37'][Math.floor(Math.random()*4)];
+        conf.style.left = Math.random()*100 + 'vw';
+        conf.style.top = '-20px';
+        conf.style.opacity = Math.random() * 0.8 + 0.2;
+        conf.style.pointerEvents = 'none';
+        conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
         document.body.appendChild(conf);
         conf.animate([
           { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-          { transform: `translateY(${Math.random() * 100 + 100}vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-        ], { duration: 3000 + Math.random() * 2000, easing: 'ease-out' });
-        setTimeout(() => conf.remove(), 5000);
+          { transform: `translateY(${Math.random()*120 + 120}vh) rotate(${Math.random()*720 - 360}deg)`, opacity: 0 }
+        ], { duration: 3500 + Math.random()*2000, easing: 'ease-out' });
+        setTimeout(() => conf.remove(), 6000);
       }
     }
 
-    // Scratch card function (for each canvas)
     function initScratch(canvasId) {
       const canvas = document.getElementById(canvasId);
       const ctx = canvas.getContext('2d');
       const w = canvas.width = canvas.parentElement.offsetWidth;
       const h = canvas.height = canvas.parentElement.offsetHeight;
 
-      // Fill with scratchable layer (silver)
-      ctx.fillStyle = '#c0c0c0';
+      const grad = ctx.createRadialGradient(w/2, h/2, 0, w/2, h/2, Math.max(w,h)/2);
+      grad.addColorStop(0, '#e0e0e0');
+      grad.addColorStop(0.4, '#c0c0c0');
+      grad.addColorStop(1, '#a0a0a0');
+      ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'destination-out'; // Erase on draw
+
+      ctx.globalAlpha = 0.15;
+      for (let i = 0; i < 800; i++) {
+        ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#888888';
+        ctx.fillRect(Math.random()*w, Math.random()*h, 2, 2);
+      }
+      ctx.globalAlpha = 1;
+
+      ctx.globalCompositeOperation = 'destination-out';
 
       let isDrawing = false;
 
@@ -137,19 +249,18 @@
         const x = (e.clientX || e.touches[0].clientX) - rect.left;
         const y = (e.clientY || e.touches[0].clientY) - rect.top;
         ctx.beginPath();
-        ctx.arc(x, y, 25, 0, Math.PI * 2); // Brush size 25px
+        ctx.arc(x, y, 28, 0, Math.PI * 2);
         ctx.fill();
       }
 
       canvas.addEventListener('mousedown', () => isDrawing = true);
-      canvas.addEventListener('touchstart', () => isDrawing = true);
+      canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
       window.addEventListener('mouseup', () => isDrawing = false);
       window.addEventListener('touchend', () => isDrawing = false);
       canvas.addEventListener('mousemove', scratch);
       canvas.addEventListener('touchmove', e => { e.preventDefault(); scratch(e); });
     }
 
-    // Initialize all 3 scratch cards
     initScratch('c1');
     initScratch('c2');
     initScratch('c3');
